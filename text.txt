@@ -1,2 +1,2 @@
-12 Hello World! Hello World! Hello World! Hello World!
- Hello World! Hello World! Hello World!
+Programs must be written for people to read,
+and only incidentally for machines to execute.
