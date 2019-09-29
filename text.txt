@@ -1,7 +1,2 @@
-Hello World!\n
-Hello World!
-Hello World!
-Hello World!
-Hello World!
-Hello World!
-Hello World!
+12 Hello World! Hello World! Hello World! Hello World!
+ Hello World! Hello World! Hello World!
