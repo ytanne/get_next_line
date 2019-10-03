@@ -5,81 +5,79 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/27 07:45:38 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/09/29 21:07:06 by yorazaye         ###   ########.fr       */
-/*                                                                           */
+/*   Created: 2019/10/02 20:45:20 by yorazaye          #+#    #+#             */
+/*   Updated: 2019/10/02 22:13:17 by yorazaye         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
 #include "libft/libft.h"
+#include "get_next_line.h"
 
-static size_t	str_upto_ch(char *str, char c)
+int		init(char **line, char *tmp)
 {
-	size_t	i;
+	int		i;
+	char	*ptr[2];
+	int		r;
 
 	i = 0;
-	while (str[i])
-	{
-		if (str[i] == c)
-			break ;
+	r = 0;
+	while (tmp[i] != '\n' && tmp[i] != '\0')
 		i++;
-	}
-	return (i);
+	if (i >= 0 && i < (int)ft_strlen(tmp))
+		r = 1;
+	ptr[0] = ft_strsub(tmp, 0, i);
+	ptr[1] = *line;
+	*line = ft_strjoin(ptr[1], ptr[0]);
+	free(ptr[0]);
+	if (ft_strcmp(ptr[1], ""))
+		free(ptr[1]);
+	return (r);
 }
 
-int				get_next_line(int fd, char **line)
+int		get_next_line(const int fd, char **line)
 {
 	int			byte;
 	char		tmp[BUFF_SIZE + 1];
-	static char	*chr[FD_SIZE];
-	char		*ptr;
+	//static char ptr[FD_SIZE][BUFF_SIZE + 1];
 
-	while ((byte = read(fd, tmp, BUFF_SIZE)))
+	if (*line)
+		ft_strclr(*line);
+	while ((byte = read(fd, tmp, BUFF_SIZE)) > 0)
 	{
 		tmp[byte] = '\0';
-		if (*line)
-			ptr = *line;
-		if (ft_strchr(tmp, '\n') != NULL)
-		{
-			ft_putstr(ft_strsub(tmp, 0, str_upto_ch(tmp, '\n')));
-			ft_putstr("\nNew line is found\n");
+		if (init(line, tmp) == 1)
 			break ;
-		}
-		if (chr[fd] == NULL)
-		{
-			chr[fd] = tmp;
-			ft_putstr("it was null, but not anymore\n");
-		}	
-		(*line) = ft_strjoin(ptr, tmp);
+		ft_strclr(tmp);
 	}
-	ft_putchar('\n');
-	ft_putstr(*line);
-	ft_putstr("---\n");
-	return (0);
+	if (byte < 0)
+		return (-1);
+	else if (byte < BUFF_SIZE)
+		return (0);
+	else
+		return (1);
 }
 
-#ifdef TEST
-#include <fcntl.h>
-#include <stdio.h>
-
-int		main(int ac, char **av)
+int		main(void)
 {
-	int		i;
 	int		fd;
-	int		rc;
-	char	*r;
+	char	*line;
 
-	i = 1;
-	r = ft_strnew(1);
-	if (ac >= 2)
+	fd = open("text.txt", O_RDONLY);
+	if (fd >= 0)
 	{
-		fd = open(av[i++], O_RDONLY);
-		rc = get_next_line(fd, &r);
-		rc = get_next_line(fd, &r);
-		close(fd);
-		//printf("%s\n", ft_strchr("Hello\nWorld", '\n'));
+		ft_putstr("Result of get_next_line is: ");
+		ft_putnbr(get_next_line(fd, &line));
+		ft_putchar('\n');
+		ft_putstr("--------------------\n");
+		ft_putstr(line);
+		ft_putstr("\n--------------------\n");
+		ft_putstr("Result of get_next_line is: ");
+		ft_putnbr(get_next_line(fd, &line));
+		ft_putchar('\n');
+		ft_putstr("--------------------\n");
+		ft_putstr(line);
 	}
+	else
+		ft_putnbr(fd);
 	return (0);
 }
-
-#endif

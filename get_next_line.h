@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 07:37:54 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/09/29 14:44:13 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/02 22:12:10 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 int		get_next_line(const int fd, char **line);
 
-# define BUFF_SIZE 3
+# define BUFF_SIZE 100
 # define FD_SIZE 4096
 
 #endif
