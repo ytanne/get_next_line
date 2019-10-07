@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 20:45:20 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/07 02:34:38 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/07 03:02:27 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ int		get_next_line(int fd, char **line)
 		return (-1);
 	*line = NULL;
 	if (heap[fd])
-		init(line, &heap[fd]);
+		if (init(line, &heap[fd]) == 1)
+			return (1);
 	while ((tmp = ft_strnew(BUFF_SIZE)) &&
 			((byte = read(fd, tmp, BUFF_SIZE)) > 0))
 	{
