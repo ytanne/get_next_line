@@ -6,7 +6,7 @@
 #    By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/02 20:47:43 by yorazaye          #+#    #+#              #
-#    Updated: 2019/10/06 23:49:24 by yorazaye         ###   ########.fr        #
+#    Updated: 2019/10/07 03:48:23 by yorazaye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ FLAGS = -Wall -Wextra -Werror -I $(F_H) -L libft -lft -g
 all: $(NAME)
 
 $(NAME):
-	gcc -o $(NAME) $(F_F) $(FLAGS)
+	gcc -o $(NAME) main.c $(F_F) $(FLAGS)
 
 clean:
 	rm -f $(F_O)
