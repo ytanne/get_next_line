@@ -56,4 +56,4 @@ cd .. && rm -rf get_next_line
 
 Thanks for reading! 
 I spend some time on this project, and I am glad that you read until the end of README :D
-![](https://www.unilad.co.uk/wp-content/uploads/2018/07/success-kid-original.jpg)
+![](https://socialnewsdaily.com/wp-content/uploads/2016/03/4f7d3b4ce8695b31c2305d1f53eb161afb7d25b1.jpg)
