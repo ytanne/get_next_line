@@ -51,3 +51,9 @@ Optional
 cd .. && rm -rf get_next_line
 
 ```
+
+# Final note
+
+Thanks for reading! 
+I spend some time on this project, and I am glad that you read until the end of README :D
+![](https://www.unilad.co.uk/wp-content/uploads/2018/07/success-kid-original.jpg)
