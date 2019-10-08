@@ -15,14 +15,6 @@ Clone the repository to a directory.
 git clone https://github.com/ytanne/get_next_line get_next_line
 
 ```
-Run the following command to clone [libft repository](https://github.com/ytanne/libft) inside the folder.
-(This is important, otherwise it will not work)
-
-```
-
-cd get_next_line && git clone https://github.com/ytanne/libft libft
-
-```
 
 To test the function, create a text file to read and run the following command with the name of your file instead of {NAME\_OF\_YOUR\_FILE}.
 
